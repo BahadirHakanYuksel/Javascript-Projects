@@ -1,0 +1,128 @@
+#projects {
+  width: 100%;
+  padding: 2.5rem 5rem;
+  gap: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.project {
+  background-color: #333;
+  width: 42rem;
+  padding: 2rem 1.4rem;
+  display: grid;
+  grid-template-rows: 17rem 9rem 4.1rem;
+  gap: 1rem;
+  border-radius: 2rem;
+  border: 1px solid transparent;
+  transition: 0.2s;
+  position: relative;
+}
+
+.project:hover {
+  border: 1px solid var(--header1);
+}
+
+.img_div {
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #494949;
+  font-size: 2rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-image: url(../projects/timer_and_stopwatch/ss/1.png);
+  background-position: center;
+  background-size: 120%;
+}
+
+.text_div {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.022);
+  transition: 0.2s;
+  border-radius: 1rem;
+}
+
+.text_div:hover {
+  background-color: rgba(255, 255, 255, 0.044);
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: var(--header1);
+  margin-bottom: 1.2rem;
+}
+
+.description {
+  display: flex;
+  padding: 0 1rem;
+  /* background-color: rgba(255, 255, 255, 0.2); */
+  font-size: 1.25rem;
+  color: rgb(206, 206, 206);
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.goBtn {
+  /* background-color: #15151566; */
+  background-color: #15151582;
+  font-size: 1.4rem;
+  font-weight: 600;
+  border: 0;
+  outline: 0;
+  transition: 0.2s;
+  border-radius: 1rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.goBtn > a {
+  color: var(--text);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.goBtn:hover {
+  border: 1px solid var(--header1);
+  background-color: #151515d8;
+}
+
+.goBtn:hover > a {
+  color: var(--header1);
+}
+
+.indexNo {
+  position: absolute;
+  font-size: 2rem;
+  left: -1rem;
+  top: -1rem;
+  transform: rotate(-10deg);
+  background-color: var(--header1);
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.project:hover > .indexNo {
+  transform: rotate(0);
+  width: 4rem;
+  height: 4rem;
+  font-size: 3.4rem;
+  left: -1.8rem;
+  top: -1.8rem;
+}

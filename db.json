@@ -1,0 +1,16 @@
+{
+  "projects": [
+    {
+      "img_url": "./projects/Timer_And_Stopwatch/ss/2.png",
+      "title": "Stopwatch And Timer",
+      "description": "Bu proje ile gününüzü planlayın",
+      "link": "./projects/Timer_And_Stopwatch/index.html"
+    },
+    {
+      "img_url": "./projects/random_color/ss/1.png",
+      "title": "Random Color",
+      "description": "Rastgele Renk Kodu Üretin",
+      "link": "./projects/random_color/index.html"
+    }
+  ]
+}
