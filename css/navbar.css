@@ -9,9 +9,51 @@
   border-bottom: 0.2rem solid rgba(255, 255, 255, 0.5);
 }
 
-.Navbar > a:first-child {
+.nav_left {
+  height: 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.social_links {
+  display: flex;
+  justify-content: center;
+  font-size: 1.8rem;
+  gap: 2rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  z-index: 0;
+}
+
+.social_link:hover {
+  transform: scale(1.1);
+}
+
+.fa-linkedin-in {
+  color: #007bb6;
+}
+.fa-linkedin-in:hover {
+  color: #009ee7;
+}
+.fa-youtube {
+  color: #bb0000;
+}
+.fa-youtube:hover {
+  color: #e00000;
+}
+
+.fa-twitter {
+  color: #00aced;
+}
+.fa-twitter:hover {
+  color: #00bbff;
+}
+
+.nav_left > a {
   color: var(--color);
-  font-size: 3rem;
+  font-size: 1.8rem;
 }
 
 .Navbar > a:last-child {

@@ -1,7 +1,7 @@
 #projects {
   width: 100%;
   padding: 2.5rem 5rem;
-  gap: 2rem;
+  gap: 3rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -21,7 +21,7 @@
 }
 
 .project:hover {
-  border: 1px solid var(--header1);
+  border: 1px solid var(--js);
 }
 
 .img_div {
@@ -56,7 +56,7 @@
   align-items: center;
   justify-content: center;
   font-size: 2.5rem;
-  color: var(--header1);
+  color: var(--js);
   margin-bottom: 1.2rem;
 }
 
@@ -94,12 +94,12 @@
 }
 
 .goBtn:hover {
-  border: 1px solid var(--header1);
+  border: 1px solid var(--js);
   background-color: #151515d8;
 }
 
 .goBtn:hover > a {
-  color: var(--header1);
+  color: var(--js);
 }
 
 .indexNo {
@@ -108,7 +108,8 @@
   left: -1rem;
   top: -1rem;
   transform: rotate(-10deg);
-  background-color: var(--header1);
+  background-color: var(--js);
+  color: black;
   width: 3rem;
   height: 3rem;
   display: flex;
