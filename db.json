@@ -11,6 +11,11 @@
       "title": "Random Color",
       "description": "Rastgele Renk Kodu Üretin",
       "link": "./projects/random_color/index.html"
+    },
+    {
+      "title": "ToDo List",
+      "description": "Yapılacak işlerinizi planlayın",
+      "link": "./projects/todo_list/index.html"
     }
   ]
 }

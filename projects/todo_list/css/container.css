@@ -1,0 +1,289 @@
+.container {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.searchbar {
+  width: 100rem;
+  height: 6rem;
+  position: relative;
+  background-color: transparent;
+}
+
+#search {
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  outline: 0;
+  border: 0;
+  padding: 0.5rem 1rem 0.5rem 6.5rem;
+  color: var(--color);
+  font-size: 2rem;
+  border-radius: 0.5rem;
+  transition: 0.3s;
+  box-shadow: 0 0 0.4rem 0.2rem rgb(0, 0, 0);
+  overflow: hidden;
+}
+
+.input_text {
+  position: absolute;
+  left: 7rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--color);
+  font-size: 2.2rem;
+  color: grey;
+  transition: 0.2s;
+}
+
+#search:focus {
+  box-shadow: 0 0 0.4rem 0.2rem var(--main);
+}
+
+#search:focus + .input_text,
+#search:valid + .input_text {
+  top: 1.2rem;
+  font-size: 1.1rem;
+}
+
+#search:valid + span + i {
+  opacity: 100%;
+}
+
+.searchbar > .inputIcon {
+  position: absolute;
+  width: 4.5rem;
+  height: 4.5rem;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color);
+  background-color: var(--back);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  border-radius: 0.5rem;
+  transition: 0.3s;
+  opacity: 80%;
+}
+
+#searchbarButtons {
+  margin-top: 2rem;
+  width: 100rem;
+  height: 2.8rem;
+  display: grid;
+  grid-template-columns: auto 10rem;
+  gap: 2rem;
+}
+
+.searchbarBtn {
+  border-radius: 1.4rem;
+  font-size: 1.4rem;
+  color: white;
+  transition: 0.2s;
+}
+
+.allDeleteBtn {
+  background-color: firebrick;
+}
+
+.allDeleteBtn:hover {
+  background-color: rgb(208, 37, 37);
+}
+
+.searchBtn {
+  background-color: rgb(0, 132, 255);
+}
+.searchBtn:hover {
+  background-color: rgb(0, 145, 255);
+}
+
+.list {
+  margin-top: 2rem;
+  width: 115.6rem;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.note {
+  width: 37.2rem;
+  height: 5rem;
+  padding: 0.6rem 0.8rem;
+  height: rem;
+  background-color: #333;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  border-radius: 0.5rem;
+}
+
+.noteBox1 {
+  width: 27rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.note_input {
+  width: 100%;
+  height: 3rem;
+  /* background-color: #555; */
+  background-color: transparent;
+  padding: 0 1.2rem;
+  color: var(--color);
+  pointer-events: none;
+  transition: 0.2s;
+  border-radius: 1.9rem 0 0 1.9rem;
+}
+
+.note_save_btn {
+  height: 3rem !important;
+  display: none;
+  border-radius: 0 1.9rem 1.9rem 0;
+}
+
+.noteBox2 {
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.2s;
+  width: 6.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.note:hover > .noteBox2 {
+  opacity: 1;
+  visibility: visible;
+}
+
+.noteBox2 > i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  background-color: rgb(209, 209, 209);
+  color: rgb(32, 32, 32);
+  border-radius: 0.3rem;
+  user-select: none;
+  cursor: pointer;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+
+.noteBox2 > i:hover {
+  background-color: rgb(230, 230, 230);
+}
+
+.note_save_btn {
+  background-color: rgb(0, 80, 141);
+  color: white;
+  transition: 0.2s;
+  padding: 0.4rem 0.8rem;
+  height: 100%;
+}
+
+.note_save_btn:hover {
+  opacity: 90% !important;
+}
+
+.noteTypes {
+  border-radius: 1.4rem;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+}
+
+.noteType {
+  border-radius: 1.4rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  transition: 0.2s;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.noteType:hover {
+  border: 2px solid black;
+}
+
+.defaultAll {
+  border: 2px solid grey;
+  color: grey;
+}
+
+.defaultAll:hover {
+  background-color: grey;
+  color: white;
+}
+
+.home {
+  border: 2px solid blue;
+  color: blue;
+}
+
+.home:hover {
+  background-color: blue;
+  color: white;
+}
+
+.school {
+  border: 2px solid orange;
+  color: orange;
+}
+
+.school:hover {
+  background-color: orange;
+  color: white;
+}
+
+.market {
+  border: 2px solid green;
+  color: green;
+}
+
+.market:hover {
+  background-color: green;
+  color: white;
+}
+
+.sport {
+  border: 2px solid red;
+  color: red;
+}
+
+.sport:hover {
+  background-color: red;
+  color: white;
+}
+
+.car {
+  border: 2px solid rgb(120, 4, 245);
+  color: rgb(120, 4, 245);
+}
+
+.car:hover {
+  background-color: rgb(120, 4, 245);
+  color: white;
+}
+
+.listTitle {
+  margin-top: 4rem;
+  color: white;
+  font-size: 4rem;
+  width: 115.6rem;
+  border-bottom: 1px solid grey;
+  padding-bottom: 0.6rem;
+}

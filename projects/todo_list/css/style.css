@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url(container.css);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --back: #222;
+  --color: white;
+  --main: rgb(0, 140, 255);
+}
+.light {
+  --back: white;
+  --color: #222;
+  --main: rgb(0, 140, 255);
+}
+
+html {
+  font-size: 10px;
+  font-family: "Montserrat", sans-serif;
+  background: var(--back);
+}
+
+input {
+  border: 0;
+  outline: 0;
+}
+
+button {
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+}
+
+.navbar {
+  height: 5rem;
+  background-color: rgba(255, 255, 255, 0.082);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.logo {
+  font-size: 2.6rem;
+  font-weight: 600;
+  background: linear-gradient(to left, rgb(77, 146, 211), rgb(0, 140, 255));
+  background-clip: text;
+  color: transparent;
+}
+
+.modes {
+  position: absolute;
+  right: 1rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+
+.modes > button {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: var(--color);
+  color: var(--back);
+  transition: 0.2s;
+}
+
+.modes > button:hover {
+  opacity: 80%;
+}
