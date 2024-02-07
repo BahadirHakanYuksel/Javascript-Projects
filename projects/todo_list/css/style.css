@@ -23,6 +23,10 @@ html {
   background: var(--back);
 }
 
+body {
+  position: relative;
+}
+
 input {
   border: 0;
   outline: 0;

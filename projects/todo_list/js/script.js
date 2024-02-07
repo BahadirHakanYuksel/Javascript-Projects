@@ -1,31 +1,99 @@
 const searchInput = document.getElementById("search");
 const list = document.querySelector(".list");
 const allDeleteBtn = document.querySelector(".allDeleteBtn");
-let note = "";
-let notes = [];
+const selectionMain = document.querySelector(".selectionMain");
+const selectionTypes = document.querySelectorAll(".selectionTypes");
+const searchbar = document.querySelector(".searchbar");
+const emptyPage = document.querySelector(".emptyPage");
+let isSelection = false;
+let HTML_note = "";
+let notes =
+  JSON.parse(localStorage.getItem("Notes")) !== null
+    ? JSON.parse(localStorage.getItem("Notes"))
+    : [];
+
+let mainIndexArray = [];
+if (notes.length > 0) {
+  notes.forEach((note) => {
+    mainIndexArray.push(note.noteIndex);
+  });
+}
+let tryarray = [];
 let updateNoteInput = "";
 let beforeEditInput = "";
+let noteType = "";
+
+class addNote {
+  constructor(note, type, noteIndex) {
+    (this.note = note), (this.type = type), (this.noteIndex = noteIndex);
+  }
+}
+
+emptyPage.addEventListener("click", () => {
+  searchInput.click();
+  emptyPageControl();
+});
+
+function emptyPageControl() {
+  console.log();
+  if (JSON.parse(localStorage.getItem("Notes")).length > 0)
+    emptyPage.style.display = "none";
+  else emptyPage.style.display = "block";
+}
 
 allDeleteBtn.addEventListener("click", allDeleteNotes);
 
 function allDeleteNotes() {
   notes = [];
-  note = "";
+  HTML_note = "";
   localStorage.setItem("Notes", JSON.stringify(notes));
-  list.innerHTML = note;
+  list.innerHTML = HTML_note;
+  emptyPageControl();
 }
 
-searchInput.addEventListener("change", (e) => {
-  searchChange(e);
-  e.target.value = "";
+searchbar.addEventListener("click", () => {
+  if (isSelection === false) {
+    selectionMain.style.visibility = "visible";
+    selectionMain.style.opacity = "1";
+    selectionMain.style.pointerEvents = "all";
+  }
+});
+
+selectionTypes.forEach((selectionType) => {
+  selectionType.addEventListener("click", (e) => {
+    console.log(
+      e.target.classList[0] === "selectionBtn" && isSelection === false
+    );
+    if (e.target.classList[0] === "selectionBtn" && isSelection === false) {
+      selectionMain.style.visibility = "hidden";
+      selectionMain.style.opacity = "0";
+      selectionMain.style.pointerEvents = "none";
+      searchInput.style.pointerEvents = "all";
+      searchInput.focus();
+      isSelection = true;
+      noteType = e.target.textContent;
+    }
+  });
+});
+
+searchInput.addEventListener("keyup", (e) => {
+  if (e.key === "Enter") {
+    searchChange(e);
+    e.target.value = "";
+    isSelection = false;
+    searchInput.style.pointerEvents = "none";
+    searchInput.blur();
+    emptyPageControl();
+  }
 });
 
 function searchChange(e) {
   const isValid = control(e.target.value.trim());
   if (isValid) {
-    const index = notes !== undefined ? notes.length : 0;
-    createNote(e.target.value, index);
-    notes.push(e.target.value);
+    const index = createIndex();
+    let toAddNote = new addNote(e.target.value, noteType, index);
+    createNote(toAddNote);
+    notes.push(toAddNote);
     if (e.target.value !== "")
       localStorage.setItem("Notes", JSON.stringify(notes));
   } else {
@@ -33,29 +101,41 @@ function searchChange(e) {
   }
 }
 
-function control(inputValue) {
-  let isValid = false;
-
-  if (notes.length > 0) {
-    notes.map((note) => {
-      if (note !== inputValue) isValid = true;
-      else isValid = false;
+function createIndex() {
+  let index;
+  if (mainIndexArray.length > 0) {
+    mainIndexArray.forEach((otherIndex) => {
+      if (otherIndex === index) index = Math.floor(Math.random() * 99999);
     });
-  } else isValid = true;
+  } else index = Math.floor(Math.random() * 99999);
+  return index;
+}
 
+function control(inputValue) {
+  let isValid = true;
+
+  if (notes != []) {
+    notes.map((note) => {
+      console.log(note.note + " " + inputValue);
+      if (note.note === inputValue) isValid = false;
+    });
+  }
+
+  console.log(isValid);
   return isValid;
 }
 
 function deleteNote(index) {
-  notes = notes.filter((note, i) => {
-    if (i !== index) {
+  notes = notes.filter((note) => {
+    if (note.noteIndex !== index) {
       return note;
     }
   });
   localStorage.setItem("Notes", JSON.stringify(notes));
-  note = "";
-  if (notes.length > 0) notes.map((note, i) => createNote(note, i));
-  else list.innerHTML = note;
+  HTML_note = "";
+  if (notes.length > 0) notes.map((note) => createNote(note));
+  else list.innerHTML = HTML_note;
+  emptyPageControl();
 }
 
 // edit & save
@@ -108,24 +188,30 @@ list.addEventListener("keyup", (e) => {
 
 function saveNote(index) {
   // saveSTORAGE
-  notes[index] = updateNoteInput;
+  notes.forEach((note) => {
+    if (note.noteIndex === index) {
+      note.note = updateNoteInput;
+    }
+  });
+  // notes[index].note = updateNoteInput;
   localStorage.setItem("Notes", JSON.stringify(notes));
 }
 
-function createNote(text, index) {
-  note += `
-  <div class="note">
+function createNote(Note) {
+  const __class = Note.type;
+  HTML_note += `
+  <div class="note ${__class}">
           <div class="noteBox1">
-            <input type="text" value="${text}" class="note_input" />
-            <button onclick="saveNote(${index})" class="note_save_btn">Close</button>
+            <input type="text" value="${Note.note}" class="note_input" />
+            <button onclick="saveNote(${Note.noteIndex})" class="note_save_btn">Close</button>
           </div>
           <div class="noteBox2 icons">
             <i class="editNote fa-solid fa-pen-to-square"></i>
-            <i onclick="deleteNote(${index})" class="fa-solid fa-delete-left"></i>
+            <i onclick="deleteNote(${Note.noteIndex})" class="fa-solid fa-delete-left"></i>
           </div>
     </div>`;
 
-  list.innerHTML = note;
+  list.innerHTML = HTML_note;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -134,7 +220,8 @@ document.addEventListener("DOMContentLoaded", () => {
       ? JSON.parse(localStorage.getItem("Notes"))
       : [];
 
-  notes.map((note, index) => {
-    createNote(note, index);
+  notes.map((note) => {
+    createNote(note);
   });
+  emptyPageControl();
 });
